@@ -1,0 +1,67 @@
+<!-- Menu Toggle Button -->
+<a href="#" class="dropdown-toggle userinfo-area" data-toggle="dropdown">
+  <!-- The user image in the navbar-->
+  <img src="./public/images/user2-160x160.jpg" class="user-image" alt="User Image">
+  <!-- hidden-xs hides the username on small devices so only the image appears. -->
+  {{ if !isSignin }}
+  <span class="hidden-xs userinfo-btn">
+    <span type="signin">登录</span>
+    <span type="signup">注册</span>
+  </span>
+  {{ else }}
+  <span class="hidden-xs">{{username || ''}}</span>
+  {{ /if }}
+</a>
+<ul class="dropdown-menu">
+  <!-- The user image in the menu -->
+  {{ if isSignin }}
+  <li class="user-header">
+    <img src="./public/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+    <p>
+      热烈欢迎 - 你可以进行职位管理
+      <small>{{username}}</small>
+    </p>
+  </li>
+  {{ else }}
+  <li>
+    <form action="" id="userform">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">用户名</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="输入用户名...">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">密码</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="输入密码...">
+        </div>
+      </div>
+    </form>
+    <!-- /.box -->
+  </li>
+  {{ /if }}
+  <!-- Menu Body -->
+  <!-- <li class="user-body">
+    <div class="row">
+      <div class="col-xs-4 text-center">
+        <a href="#">花朵</a>
+      </div>
+      <div class="col-xs-4 text-center">
+        <a href="#">销量</a>
+      </div>
+      <div class="col-xs-4 text-center">
+        <a href="#">好友</a>
+      </div>
+    </div>
+  </li> -->
+  <!-- Menu Footer-->
+  <li class="user-footer" id="user-footer">
+    <div class="pull-left">
+      <a href="javascript:;" class="btn btn-default btn-flat">关闭</a>
+    </div>
+    <div class="pull-right {{isSignin ? 'hidden' : ''}}" id="userbtn"></div>
+    <div class="pull-right {{!isSignin ? 'hidden' : ''}}">
+      <a href="javascript:;" id="signoutbtn" class="btn btn-default btn-flat">退出</a>
+    </div>
+  </li>
+</ul>
